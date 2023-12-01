@@ -1,2 +1,2 @@
 # Practise103
-Identity Kütüphanesi ile Üye Girişi İşlemleri
+Token ile Authentication ve Authorization işlemleri
