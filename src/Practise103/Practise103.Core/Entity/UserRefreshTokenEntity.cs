@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Practise103.Core.Entity
 {
-    internal class UserRefreshTokenEntity
+    public class UserRefreshTokenEntity
     {
+        public int UserId { get; set; }
+        public string Code { get; set; }
+        public DateTime Expiration { get; set; }
     }
 }
