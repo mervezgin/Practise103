@@ -9,13 +9,9 @@ namespace Practise103.Core.Entities
 {
     public class RoleEntity
     {
-        [Required]
+        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        [Required, EmailAddress, MaxLength(100)] 
-        public string Email { get; set; }
-
-        [Required]
-        public string Password { get; set; }
+        public ICollection<UserEntity> Users { get; set; }
     }
 }

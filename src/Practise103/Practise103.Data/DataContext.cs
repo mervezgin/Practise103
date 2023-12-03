@@ -17,6 +17,16 @@ namespace Practise103.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            var roles = new RoleEntity[]
+            {
+                new RoleEntity { Id = 1, Name = "Seller" }, 
+                new RoleEntity { Id = 2, Name = "Buyer" } 
+            };
+            modelBuilder.Entity<RoleEntity>().HasData(roles);
+
+            modelBuilder.ApplyConfiguration(new ProductEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
 

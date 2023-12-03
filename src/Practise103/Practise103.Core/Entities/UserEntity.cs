@@ -1,16 +1,15 @@
-﻿ using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Practise103.Core.Entities
 {
     public class UserEntity 
     {
+        [Required]
         public int RoleId { get; set; }
+        [Key]
         public int Id { get; set; }
 
         [Required, MaxLength(50)]
@@ -25,5 +24,19 @@ namespace Practise103.Core.Entities
         [Required]
         public string Password { get; set; }
         public RoleEntity Role { get; set; }
+        public ICollection<ProductEntity> Products { get; set; }
+        public ICollection<UserRefreshTokenEntity> Tokens { get; set; }
+    }
+
+    public class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
+    {
+        public void Configure(EntityTypeBuilder<UserEntity> builder)
+        {
+            builder.HasOne(u => u.Role)
+                .WithMany(r => r.Users)
+                .HasForeignKey(u => u.RoleId)
+                .OnDelete(DeleteBehavior.ClientCascade);
+        }
+
     }
 }
