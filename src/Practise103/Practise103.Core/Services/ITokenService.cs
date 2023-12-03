@@ -1,6 +1,6 @@
 ﻿using Practise103.Core.Configuration;
 using Practise103.Core.Dtos;
-using Practise103.Core.Entity;
+using Practise103.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

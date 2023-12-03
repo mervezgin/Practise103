@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practise103.Core.Entity
+namespace Practise103.Core.Entities
 {
     public class UserRefreshTokenEntity
     {
