@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +9,7 @@ namespace Practise103.Core.Entities
     {
         [Required]
         public int RoleId { get; set; }
+
         [Key]
         public int Id { get; set; }
 

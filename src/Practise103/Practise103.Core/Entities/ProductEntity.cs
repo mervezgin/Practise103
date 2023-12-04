@@ -14,14 +14,19 @@ namespace Practise103.Core.Entities
     {
         [Key]
         public int Id { get; set; }
+
         [Required, MaxLength(200)]
         public string Name { get; set; }
+
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
+
         [Required]
         public int Stock { get; set; }
+
         [Required]
         public string UserId { get; set; }
+
         public UserEntity Seller { get; set; }
 
 

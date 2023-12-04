@@ -26,6 +26,9 @@ namespace Practise103.Data
 
             modelBuilder.ApplyConfiguration(new ProductEntityConfiguration());
             modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new UserRefreshTokenConfiguration());
+
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
             base.OnModelCreating(modelBuilder);
         }
