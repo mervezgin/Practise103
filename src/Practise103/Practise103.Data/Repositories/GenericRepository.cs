@@ -21,40 +21,35 @@ namespace Practise103.Data.Repositories
             _dataContext = dataContext;
             _dbSet = dataContext.Set<TEntity>();
         }
-        public async Task AddAsync(TEntity entity)
-        {
-            await _dbSet.AddAsync(entity);
-        }
-
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync(); 
+            return await _dbSet.ToListAsync();
         }
-
         public async Task<TEntity> GetByIdAsync(int id)
         {
             var entity = await _dbSet.FindAsync(id);
-            if(entity != null)
+            if (entity != null)
             {
                 _dataContext.Entry(entity).State = EntityState.Detached;
             }
             return entity;
         }
-
-        public void Remove(TEntity entity)
+        public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
         {
-            _dbSet.Remove(entity);
+            return _dbSet.Where(predicate);
         }
-
+        public async Task AddAsync(TEntity entity)
+        {
+            await _dbSet.AddAsync(entity);
+        }
         public TEntity Update(TEntity entity)
         {
             _dataContext.Entry(entity).State = EntityState.Modified;
             return entity;
         }
-
-        public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
+        public void Remove(TEntity entity)
         {
-            return _dbSet.Where(predicate);
+            _dbSet.Remove(entity);
         }
     }
 }
